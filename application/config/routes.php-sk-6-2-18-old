@@ -1,0 +1,111 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+| -------------------------------------------------------------------------
+| URI ROUTING
+| -------------------------------------------------------------------------
+| This file lets you re-map URI requests to specific controller functions.
+|
+| Typically there is a one-to-one relationship between a URL string
+| and its corresponding controller class/method. The segments in a
+| URL normally follow this pattern:
+|
+|	example.com/class/method/id/
+|
+| In some instances, however, you may want to remap this relationship
+| so that a different class/function is called than the one
+| corresponding to the URL.
+|
+| Please see the user guide for complete details:
+|
+|	https://codeigniter.com/user_guide/general/routing.html
+|
+| -------------------------------------------------------------------------
+| RESERVED ROUTES
+| -------------------------------------------------------------------------
+|
+| There are three reserved routes:
+|
+|	$route['default_controller'] = 'welcome';
+|
+| This route indicates which controller class should be loaded if the
+| URI contains no data. In the above example, the "welcome" class
+| would be loaded.
+|
+|	$route['404_override'] = 'errors/page_missing';
+|
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
+|
+|	$route['translate_uri_dashes'] = FALSE;
+|
+| This is not exactly a route, but allows you to automatically route
+| controller and method names that contain dashes. '-' isn't a valid
+| class or method name character, so it requires translation.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
+|
+| Examples:	my-controller/index	-> my_controller/index
+|		my-controller/my-method	-> my_controller/my_method
+*/
+$route['default_controller'] = 'home';
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+$route['user-register'] = 'user/register';
+$route['user-register/(:any)/(:any)/(:any)'] = 'user/register/$1/$2/$3';
+$route['user-login'] = 'user/login';
+//$route['user-login/(:any)'] = 'user/login/$1';
+$route['user-verification/(:any)'] = 'user/verification/$1';
+$route['user/reset-password/(:any)'] = 'user/reset_password/$1';
+$route['contact-us'] = 'static_pages/contactus';
+$route['user/log-out'] = 'user/logout';
+$route['agent-register'] = 'agent/agentRegister';
+$route['user-profile'] = 'user/userprofile';
+$route['my-profile-view'] = 'user/myprofileView';
+$route['user-profile/(:any)'] = 'user/userprofile/$1';
+$route['user-setting'] = 'user/setting';
+$route['home/(:any)'] = 'home/index/$1';
+//
+
+/************** Flight rought ****************/
+/************** Flight rought ****************/
+$route['flight-details/(:any)/(:any)/(:any)'] = 'service/flightDetails/$1/$2/$3';
+$route['flight']='service/flight';
+$route['flight/(:any)']='service/flight/$1';
+$route['flight/(:any)/(:any)']='service/flight/$1/$2';
+$route['hotel']='service/hotel';
+$route['hotel/(:any)']='service/hotel/$1';
+
+$route['hotel/(:num)/(:num)']='service/hotel/$1/$2';
+$route['hotel-details/(:any)/(:any)'] = 'service/hotel_details/$1/$2';
+$route['train'] = 'service/train';
+$route['train-details/(:any)/(:any)'] = 'service/train_details/$1/$2';
+$route['hotel-booking/(:any)/(:any)'] = 'bookings/hotel_booking/$1/$2';
+$route['hotel-pay/(:any)/(:any)'] = 'bookings/hotel_booking/$1/$2';
+$route['hotel-payment'] = 'bookings/hotel_booking_pay';
+$route['hotel-booking-status'] = 'bookings/hotel_booking_status';
+$route['booking/add_book'] = 'bookings/flight_booking';
+$route['booking/train_book'] = 'bookings/train_booking';
+$route['booking/my-hotel-booking'] = 'bookings/user_hotel_booking';
+$route['booking/my-flight-booking'] = 'bookings/user_flight_booking';
+$route['booking/my-train-booking'] = 'bookings/user_train_booking';
+$route['booking/flight-booking-passenger/(:any)/(:any)'] = 'bookings/flight_passenger_list/$1/$2';
+$route['booking/train-booking-passenger'] = 'bookings/train_passenger_list';
+
+$route['booking/cancel-flight-booking'] = 'bookings/user_cancel_flight_booking';
+$route['booking/cancel-hotel-booking'] = 'bookings/user_cancel_hotel_booking';
+$route['booking/cancel-train-booking'] = 'bookings/user_cancel_train_booking';
+
+$route['notifications'] = 'service/notifications'; //sk for alert message 21-12-2017
+$route['user/referred-code'] = 'user/referred_code';
+$route['user/my-transation'] = 'user/mytransation';
+$route['user/customer-details'] = 'user/customer_details';
+$route['user/add-customer'] = 'user/new_customer';
+$route['user/my-wallet'] = 'user/my_wallet';
+$route['user/change-password'] = 'user/change_password_setting';
+$route['refer-a-friend'] = 'user/refer_a_friend';
+$route['user/referral_code'] = 'user/referral_code';
+
+$route['booking/view-hotel-booking/(:any)'] = 'bookings/view_hotel_booking/$1';
+

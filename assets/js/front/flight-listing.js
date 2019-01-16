@@ -1,0 +1,272 @@
+function filght_sort_change(current,pageid){  
+    var newurl = site_url+'flight/1/'+current.value; 
+    window.location.href = newurl;
+}
+
+$("#appy-flight-filters").submit(function(){ 
+  $("input").css("border","1px solid #b7b7b7");
+  $("input").removeClass("form-error-class");
+  $("input[name=exampleRadios]").removeClass("form-error-class");
+  $(".form-elements.check-field label i").css("border","1px solid #b7b7b7");
+  $("#adult_id").css("border","0px solid #b7b7b7");
+  $("#adult_id").removeClass("form-error-class");
+
+  var isvalArr = [];
+  if($("#flight_from_id").val().trim() ==''){
+    $("#flight_from_id").addClass("form-error-class");
+    isvalArr.push(false);
+  }
+  if($("#flight_to_id").val().trim() ==''){
+    $("#flight_to_id").addClass("form-error-class");
+    isvalArr.push(false);
+  }
+
+var formLocation =  $("#flight_from_id").val();
+var toLocation = $("#flight_to_id").val();
+var FromLoc = formLocation.toLowerCase();
+var ToLoc = toLocation.toLowerCase();
+
+  if(FromLoc == ToLoc)
+  {
+      $("#flight_from_id").addClass("form-error-class");
+      $("#flight_to_id").addClass("form-error-class");
+      $("#to_flight_error").html('From and To location can not be same.');
+      $('#to_flight_error').css('color','Red');
+      isvalArr.push(false);
+      
+  }else{
+    $("#to_flight_error").html(""); 
+  }
+  
+  if($(".depart-on").val().trim() ==''){
+    $(".depart-on").addClass("form-error-class");
+    isvalArr.push(false);
+  }
+
+  /*var depart_date = $("#depart_on").val();
+  var return_date = $("#return_on").val();*/
+
+/*  var depart_date = new Date($("#depart_on").val()).getTime();
+  var return_date = new Date($("#return_on").val()).getTime();*/
+
+  
+  
+   
+/*  alert(addr_flag); sk comment code 
+ if(addr_flag==0) {
+	 alert("Please select city from dropdown");
+	  isvalArr.push(false);
+ }*/
+ 
+  if($("#adult_id").val().trim() ==''){
+    $("#adult_id").addClass("form-error-class");
+    isvalArr.push(false);
+  }
+  if($('input[name=exampleRadios]:checked').length<=0){
+    $("input[name=exampleRadios]").addClass("form-error-class");
+    $(".form-elements.check-field label i").css("border","1px solid red");
+    isvalArr.push(false);
+  }
+  if($('input[name=exampleRadios]:checked').val() =='return'){
+    if($(".return-on").val().trim() ==''){
+      $(".return-on").addClass("form-error-class");
+      isvalArr.push(false);
+    }
+
+    if( $("#return_on").val() != '' &&  $("#return_on").val() != undefined){
+      var comparflightDate = ($("#depart_on").val() === $("#return_on").val());
+       if(comparflightDate == true){
+        $("#return_on").addClass("form-error-class");
+        $("#return_on_flight_error").html('Depart on and return on can not be same.');
+        $("#return_on_flight_error").css('color','red');
+         isvalArr.push(false);
+      }else{
+        $("#return_on_flight_error").html("");
+      }
+
+    }
+
+  }
+
+  for(var i=0;i<isvalArr.length;i++){
+    if(isvalArr[i] == false){
+      $(".form-error-class").css("border","1px solid red");      
+      return false;
+    }
+  }
+
+});
+
+$("#refresh_btn_flight").click(function(){
+  var formLocation =  $("#flight_from_id").val();
+  var toLocation = $("#flight_to_id").val();
+  $("#flight_from_id").val(toLocation);
+  $("#flight_to_id").val(formLocation);
+});
+
+$(".form-field-section").each(function(){
+    $(this).find("input").focus(function(){
+    $(this).css("border","1px solid #b7b7b7");
+    $(this).removeClass("form-error-class");
+  });
+  $(this).find("input").focusout(function(){ 
+	 
+    if($(this).attr("value").trim() == ''){       
+      $(this).css("border","1px solid red");
+      $(this).addClass("form-error-class");  
+    }
+    
+  });
+  $("input[name=exampleRadios]").change(function(){
+    $(".form-elements.check-field label i").css("border","1px solid #b7b7b7");
+    $(this).removeClass("form-error-class");
+
+    if($('input[name=exampleRadios]:checked').val() =='return'){
+      $("#id_returnradio").show();
+    }else{
+      $("#id_returnradio").hide();
+    }
+
+  });
+
+  $("input[name=flightRadios]").change(function(){
+    $('#flight_from_id').val("");
+    $('#flight_to_id').val("");
+    $(".form-elements.check-field label i").css("border","1px solid #b7b7b7");
+    $(this).removeClass("form-error-class");
+
+    if($('input[name=flightRadios]:checked').val() =='domestic'){
+      $("#id_domesticairline").show();
+    }else{
+      $("#id_domesticairline").hide();
+    }
+
+  });
+
+
+  
+
+});
+
+
+var dateFormat ='dd-mm-yy';
+var from = $( ".depart-on" )
+        .datepicker({
+          changeMonth: false,
+          numberOfMonths: 1,
+          minDate: 0,
+          dateFormat : 'dd-mm-yy',
+          onClose: function(){
+                    if($(this).attr("value").trim() =='' ){
+                        $(this).css("border","1px solid red");
+                        $(this).addClass("form-error-class"); 
+                    }else{
+                        $(this).css("border","1px solid #b7b7b7");
+                        $(this).removeClass("form-error-class");
+                    }                        
+                    
+                }
+        })
+        .on( "change", function() {
+      to.datepicker( "option", "minDate", getDate( this ) );
+      var fromdate = $('#checkin').val();
+      var todate = $('#checkout').val();
+      if(fromdate !='' && todate !=''){
+        //get_price_for_customer(fromdate,todate);
+      }
+      console.log("to date"+todate);
+        })
+ var to = $( ".return-on" ).datepicker({
+  changeMonth: false, 
+  numberOfMonths: 1,
+  minDate: 0,
+  dateFormat : 'dd-mm-yy',
+  onClose: function(){
+              if($(this).attr("value").trim() =='' ){  
+                  $(this).css("border","1px solid red");
+                  $(this).addClass("form-error-class"); 
+              }else{
+                  $(this).css("border","1px solid #b7b7b7");
+                  $(this).removeClass("form-error-class");
+              }                        
+              
+          }
+})
+.on( "change", function() { 
+  //from.datepicker( "option", "maxDate", getDate( this ) );
+  var fromdate = $('#checkin').val();
+  var todate = $('#checkout').val();
+  if(fromdate !='' && todate !=''){
+    //get_price_for_customer(fromdate,todate);
+  }
+});
+function getDate( element ) {
+  var date;
+  try {
+    date = element.value;
+  } catch( error ) {
+    date = null;
+  }
+
+  return element.value;
+}
+if($('input[name=exampleRadios]:checked').val() =='return'){
+  $("#id_returnradio").show();
+}else{
+  $("#id_returnradio").hide();
+}
+$("#adult_id").change(function(){
+	var totlaAdults = $(this).val();
+	if(totlaAdults>0){
+		var childSelect = document.getElementById('id_child');
+		childSelect.innerHTML ='';
+		var noOfChild = 7- parseInt(totlaAdults) ; 
+		for(i=0;i<=noOfChild;i++){
+			var option = document.createElement("option");
+			option.value=i;
+			option.innerHTML= i;
+			childSelect.appendChild(option);
+		}
+		
+		var infantSelect = document.getElementById('id_infant');
+		infantSelect.innerHTML ='';
+		for(j=0;j<=parseInt(totlaAdults);j++){
+			var option = document.createElement("option");
+			option.value=j;
+			option.innerHTML= j;
+			infantSelect.appendChild(option);
+		}
+		
+		
+	}
+});
+
+
+
+
+var xhr;
+addr_select_flag = 0;
+$('#flight_from_id').autoComplete({
+    minChars: 1,
+    source: function(term, response){
+        $.getJSON(site_url+'service/get_depature_airports', { q: term }, function(data){ 
+          
+          response(data);
+        });
+    },
+    onSelect: function(e, term, item){
+		addr_select_flag = 1;
+		$("#flight_to_id").focus();
+        //alert(addr_select_flag);
+    }
+});
+$('#flight_to_id').autoComplete({
+    minChars: 1,
+    source: function(term, response){
+        $.getJSON(site_url+'service/get_depature_airports', { q: term }, function(data){           
+          response(data);
+        });
+        
+    }
+});
+$("#flight_from_id").focus(function(){ if(addr_select_flag) { addr_flag = 1; addr_select_flag=0;} else {addr_flag = 0; addr_select_flag=0;} })

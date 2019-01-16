@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>::.. Rumbostar ..::</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600,400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <!-- CSS LIBRARY -->
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/awe-booking-font.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery-ui.css">
+    <!-- REVOLUTION DEMO -->
+    <link rel="stylesheet" type="text/css" href="revslider-demo/css/settings.css">
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+    <!-- CSS COLOR -->
+    <link id="colorreplace" rel="stylesheet" type="text/css" href="css/colors/blue.css">
+     <script type="text/javascript" src="js/jquery.js"></script>
+     <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript">
+  function collapse(){
+     if($("#bs-example-navbar-collapse-1").hasClass("in")){
+      $("#bs-example-navbar-collapse-1").removeClass("in");
+    }else{
+      $("#bs-example-navbar-collapse-1").addClass("in");
+    }
+   }
+    $(document).ready(function () {
+    var menu = $('.sticky_header');
+    var origOffsetY = menu.offset().top;
+    function scroll() {
+        if ($(window).scrollTop() >= origOffsetY) {
+            $('.sticky_header').addClass('sticky');
+            $('#con').addClass('menu-padding');
+        } else {
+            $('.sticky_header').removeClass('sticky');
+            $('#con').removeClass('menu-padding');
+        }
+     }
+    document.onscroll = scroll;
+});
+</script>
+</head>
+
+<!--[if IE 7]> <body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 8]> <body class="ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]> <body class="ie9 lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+
+
+
+    <!-- PAGE WRAP -->
+    <div id="page-wrap">
+
+<div class="top-header">
+       <nav class="navbar navbar-default">
+         <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+             </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav left-menu">
+        <!--<li class="active"><a href="#">My Account </a></li>-->
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">USD <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                    <li><a href="#">USD 1</a></li>
+                     <li><a href="#">USD 2</a></li>
+                       <li><a href="#">USD 3</a></li>
+                       <li><a href="#">USD 4</a></li>
+            </ul>
+        </li>
+        <li class="dropdown lang-change">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">English <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Italian</a></li>
+                 <li><a href="#">Romanian</a></li>
+                   <li><a href="#">spanish</a></li>
+                   <li><a href="#">portuguese</a></li>
+                </ul>
+        </li>
+      </ul>
+    
+      <ul class="nav navbar-nav navbar-right">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">View Order</a></li>
+            <li><a href="#">How to Order</a></li>
+            <li><a href="#">Check In</a></li>            
+            
+       </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>    
+        <!-- PRELOADER -->
+        <div class="preloader"></div>
+        <!-- END / PRELOADER -->
+
+        
+        <!-- HEADER PAGE -->
+<header class="header-section sticky_header">
+<div class="container" id="con">
+  <div class="row">
+    <div class="col-lg-4 logo">
+        <a href="index.html">
+            <img src="images/logo-main.png" alt="Rumbostar" title="Rumbostar">
+        </a>
+    </div>
+   
+    <div class="col-lg-8" id="main-menu-section">
+         <div class="col-lg-6 menu-item">
+          <ul class="nav navbar-nav">
+            <li><a href="flights-listing.html">Flight</a></li>                            
+            <li><a href="#">Hotel</a></li>
+            <li><a href="#">Train</a></li>            
+            </ul>
+      </div>
+
+    <div class="col-lg-6 checkin navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+           <li class="login-user"><a href="login.html">Log In</a></li>
+            <li class="regi-user"><a href="register.html">Register</a></li>
+            <li class="dropdown myaccount">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome User <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">My Account</a></li>
+                 <li><a href="#">My Profile</a></li>
+                   <li><a href="#">Setting</a></li>
+                   <li><a href="#">Logout</a></li>
+                </ul>
+        </li>
+         </ul>
+    </div>
+
+    </div>
+
+    </div>
+    </div>
+</header>
+        <!-- END / HEADER PAGE -->
+
+        <!-- BREADCRUMB -->
+        <section class="flight-details">
+            <div class="container">
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">North America</a></li>
+                        <li><a href="#">USA</a></li>
+                        <li><span>NewYork</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- BREADCRUMB -->
+
+        
+        <section class="product-detail flight-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-detail__info">
+                            <div class="product-title">
+                                <h2>Citilink : Hanoi - NYC</h2>
+                            </div>
+                            <div class="product-address">
+                                <span>9579 Wishing Mount, Wynot, ND,  US. | +1-888-8765-1234</span>
+                            </div>
+                            <div class="product-email">
+                                <i class="fa fa-envelope"></i>
+                                <a href="#">Send Email Inquiry</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="product-tabs tabs">
+                            <ul>
+                                <li>
+                                    <a href="#tabs-1">Initiative</a>
+                                </li>
+                                <li>
+                                    <a href="#tabs-2">Services on-flight</a>
+                                </li>
+                                <li>
+                                    <a href="#tabs-3">Good to know</a>
+                                </li>
+                                <li>
+                                    <a href="#tabs-4">Review &amp; rating</a>
+                                </li>
+                            </ul>
+                            <div class="product-tabs__content">
+                                <div id="tabs-1">
+                                    <div class="initiative">
+                                        <!-- ITEM -->
+                                        <div class="initiative__item">
+                                            <div class="initiative-top">
+                                                <div class="title">
+                                                    <div class="from-to">
+                                                        <span class="from">Ha Noi</span>
+                                                        <i class="awe-icon awe-icon-arrow-right"></i>
+                                                        <span class="to">New York</span>
+                                                    </div>
+                                                    <div class="time">Thursday 12 Feb 2015 | Total time: 33h 30m</div>
+                                                </div>
+                                                <div class="price">
+                                                    <span class="amount">$1200</span>
+                                                    <a href="#" class="initiative-choose-other-open">Choose other</a>
+                                                </div>
+                                            </div>
+                                            <table class="initiative-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="item-thumb">
+                                                                <div class="image-thumb">
+                                                                    <img src="images/flight/Airline3.png" alt="">
+                                                                </div>
+                                                                <div class="text">
+                                                                    <span>Citilink Airway</span>
+                                                                    <p>CL-829</p>
+                                                                    <span>Economy</span>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                        <td>
+                                                            <div class="item-body">
+                                                                <div class="item-from">
+                                                                    <h3>HAN</h3>
+                                                                    <span class="time">14:15</span>
+                                                                    <span class="date">Thu, 12 Feb, 2015</span>
+                                                                    <p class="desc">John F Kennedy, New York</p>
+                                                                </div>
+                                                                <div class="item-time">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                    <span>10h 25m</span>
+                                                                </div>
+                                                                <div class="item-to">
+                                                                    <h3>DOH</h3>
+                                                                    <span class="time">23:10</span>
+                                                                    <span class="date">Thu, 12 Feb, 2015</span>
+                                                                    <p class="desc">Doha, Doha</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="item-thumb">
+                                                                <div class="image-thumb">
+                                                                    <img src="images/flight/Airline3.png" alt="">
+                                                                </div>
+                                                                <div class="text">
+                                                                    <span>Citilink Airway</span>
+                                                                    <p>Cl-829</p>
+                                                                    <span>Economy</span>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                        <td>
+                                                            <div class="item-body">
+                                                                <div class="item-from">
+                                                                    <h3>HAN</h3>
+                                                                    <span class="time">14:15</span>
+                                                                    <span class="date">Thu, 12 Feb, 2015</span>
+                                                                    <p class="desc">John F Kennedy, New York</p>
+                                                                </div>
+                                                                <div class="item-time">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                    <span>10h 25m</span>
+                                                                </div>
+                                                                <div class="item-to">
+                                                                    <h3>DOH</h3>
+                                                                    <span class="time">23:10</span>
+                                                                    <span class="date">Thu, 12 Feb, 2015</span>
+                                                                    <p class="desc">Doha, Doha</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- END / ITEM -->
+                                        <!-- ITEM -->
+                                        
+                                        <!-- END / ITEM -->
+                                    </div>
+                                </div>
+                                <div id="tabs-2">
+                                    <div class="services-on-flight">
+                                        <div class="item">
+                                            <label>
+                                                <input type="checkbox" name="serviceitem">
+                                                <i class="awe-icon awe-icon-check"></i>
+                                                <span>Entertainment</span>
+                                            </label>
+                                        </div>
+                                        <div class="item">
+                                            <label>
+                                                <input type="checkbox" name="serviceitem">
+                                                <i class="awe-icon awe-icon-check"></i>
+                                                <span>Communication</span>
+                                            </label>
+                                        </div>
+                                        <div class="item">
+                                            <label>
+                                                <input type="checkbox" name="serviceitem">
+                                                <i class="awe-icon awe-icon-check"></i>
+                                                <span>Inflight Magazine</span>
+                                            </label>
+                                        </div>
+                                        <div class="item">
+                                            <label>
+                                                <input type="checkbox" name="serviceitem">
+                                                <i class="awe-icon awe-icon-check"></i>
+                                                <span>Inflight Cuisine & Beverages</span>
+                                            </label>
+                                        </div>
+                                        <div class="item">
+                                            <label>
+                                                <input type="checkbox" name="serviceitem">
+                                                <i class="awe-icon awe-icon-check"></i>
+                                                <span>Your Health Inflight</span>
+                                            </label>
+                                        </div>
+                                        <div class="item">
+                                            <label>
+                                                <input type="checkbox" name="serviceitem">
+                                                <i class="awe-icon awe-icon-check"></i>
+                                                <span>Inflight Duty Free</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tabs-3">
+                                    <table class="good-to-know-table">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <p>Check in</p>
+                                                </th>
+                                                <td>
+                                                    <p>From 15:00 hours</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Check out</p>
+                                                </th>
+                                                <td>
+                                                    <p>Until 11:00 hours</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Cancellation / prepayment</p>
+                                                </th>
+                                                <td>
+                                                    <p>Cancellation and prepayment policies vary according to room type. Please check the room conditions when selecting your room above.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Children and extra beds</p>
+                                                </th>
+                                                <td>
+                                                    <p>The maximum number of children’s cots/cribs in a room is 1.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Internet</p>
+                                                </th>
+                                                <td>
+                                                    <p>free! WiFi is available in all areas and is free of charge.</p>
+                                                    <p><span class="light">Free</span>children under 2 years stay free of charge when using existing beds.</p>
+                                                    <p><span class="light">Free</span>children under 2 years stay free of charge when using existing beds.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Pets</p>
+                                                </th>
+                                                <td>
+                                                    <p>Pets are allowed. Charges may be applicable.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Groups</p>
+                                                </th>
+                                                <td>
+                                                    <p>When booking for more than 11 persons, different policies and additional supplements may apply.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <p>Accepted cards for payment</p>
+                                                </th>
+                                                <td>
+                                                    <p><img src="images/paypal2.png" alt=""></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="tabs-4">
+                                    <div id="reviews">
+                                        <div class="rating-info">
+                                            <div class="average-rating-review good">
+                                                <span class="count">7.5</span>
+                                                <em>Average rating</em>
+                                                <span>Good</span>
+                                            </div>
+                                            <ul class="rating-review">
+                                                <li>
+                                                    <em>Facility</em>
+                                                    <span>7.5</span>
+                                                </li>
+                                                <li>
+                                                    <em>Human</em>
+                                                    <span>9.0</span>
+                                                </li>
+                                                <li>
+                                                    <em>Service</em>
+                                                    <span>9.5</span>
+                                                </li>
+                                                <li>
+                                                    <em>Interesting</em>
+                                                    <span>8.7</span>
+                                                </li>
+                                            </ul>
+                                            <a href="#" class="write-review">Write a review</a>
+                                        </div>
+                                        <div id="add_review">
+                                            <h3 class="comment-reply-title">Add a review</h3>
+                                            <form>
+                                                <div class="comment-form-author">
+                                                    <label for="author">Name <span class="required">*</span></label>
+                                                    <input id="author" type="text">
+                                                </div>
+                                                <div class="comment-form-email">
+                                                    <label for="email">Email <span class="required">*</span></label>
+                                                    <input id="email" type="text">
+                                                </div>
+                                                <div class="comment-form-rating">
+                                                    <h4>Your Rating</h4>
+                                                    <div class="comment-form-rating__content">
+                                                        <div class="item facility">
+                                                            <label>Facility</label>
+                                                            <select class="awe-select">
+                                                                <option>5.0</option>
+                                                                <option>6.5</option>
+                                                                <option>7.5</option>
+                                                                <option>8.5</option>
+                                                                <option>9.0</option>
+                                                                <option>10</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="item human">
+                                                            <label>Human</label>
+                                                            <select class="awe-select">
+                                                                <option>5.0</option>
+                                                                <option>6.5</option>
+                                                                <option>7.5</option>
+                                                                <option>8.5</option>
+                                                                <option>9.0</option>
+                                                                <option>10</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="item service">
+                                                            <label>Service</label>
+                                                            <select class="awe-select">
+                                                                <option>5.0</option>
+                                                                <option>6.5</option>
+                                                                <option>7.5</option>
+                                                                <option>8.5</option>
+                                                                <option>9.0</option>
+                                                                <option>10</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="item interesting">
+                                                            <label>Interesting</label>
+                                                            <select class="awe-select">
+                                                                <option>5.0</option>
+                                                                <option>6.5</option>
+                                                                <option>7.5</option>
+                                                                <option>8.5</option>
+                                                                <option>9.0</option>
+                                                                <option>10</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-form-comment">
+                                                    <label for="comment">Your Review</label>
+                                                    <textarea id="comment"></textarea>
+                                                </div>
+                                                <div class="form-submit">
+                                                    <input type="submit" class="submit" value="Submit">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div id="comments">
+                                            <ol class="commentlist">
+                                                <li>
+                                                    <div class="comment-box">
+                                                        <div class="avatar">
+                                                            <img src="images/img/demo-thumb.jpg" alt="">
+                                                        </div>
+                                                        <div class="comment-body">
+                                                            <p class="meta">
+                                                                <strong>Nguyen Gallahendahry</strong>
+                                                                <span class="time">December 10, 2012</span>
+                                                            </p>
+                                                            <div class="description">
+                                                                <p>Takes me back to my youth. I love the design of this soda machine. A bit pricy though..!</p>
+                                                            </div>
+
+                                                            <div class="rating-info">
+                                                                <div class="average-rating-review good">
+                                                                    <span class="count">7.5</span>
+                                                                    <em>Average rating</em>
+                                                                    <span>Good</span>
+                                                                </div>
+                                                                <ul class="rating-review">
+                                                                    <li>
+                                                                        <em>Facility</em>
+                                                                        <span>7.5</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Human</em>
+                                                                        <span>9.0</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Service</em>
+                                                                        <span>9.5</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Interesting</em>
+                                                                        <span>8.7</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="comment-box">
+                                                        <div class="avatar">
+                                                            <img src="images/img/demo-thumb.jpg" alt="">
+                                                        </div>
+                                                        <div class="comment-body">
+                                                            <p class="meta">
+                                                                <strong>James Bond not 007</strong>
+                                                                <span class="time">December 10, 2012</span>
+                                                            </p>
+                                                            <div class="description">
+                                                                <p>Takes me back to my youth. I love the design of this soda machine. A bit pricy though..!</p>
+                                                            </div>
+
+                                                            <div class="rating-info">
+                                                                <div class="average-rating-review good">
+                                                                    <span class="count">7.5</span>
+                                                                    <em>Average rating</em>
+                                                                    <span>Good</span>
+                                                                </div>
+                                                                <ul class="rating-review">
+                                                                    <li>
+                                                                        <em>Facility</em>
+                                                                        <span>7.5</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Human</em>
+                                                                        <span>9.0</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Service</em>
+                                                                        <span>9.5</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Interesting</em>
+                                                                        <span>8.7</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="comment-box">
+                                                        <div class="avatar">
+                                                            <img src="images/img/demo-thumb.jpg" alt="">
+                                                        </div>
+                                                        <div class="comment-body">
+                                                            <p class="meta">
+                                                                <strong>Bratt not Pitt</strong>
+                                                                <span class="time">December 10, 2012</span>
+                                                            </p>
+                                                            <div class="description">
+                                                                <p>Takes me back to my youth. I love the design of this soda machine. A bit pricy though..!</p>
+                                                            </div>
+
+                                                            <div class="rating-info">
+                                                                <div class="average-rating-review fine">
+                                                                    <span class="count">5.0</span>
+                                                                    <em>Average rating</em>
+                                                                    <span>Fine</span>
+                                                                </div>
+                                                                <ul class="rating-review">
+                                                                    <li>
+                                                                        <em>Facility</em>
+                                                                        <span>7.5</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Human</em>
+                                                                        <span>9.0</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Service</em>
+                                                                        <span>9.5</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <em>Interesting</em>
+                                                                        <span>8.7</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="detail-sidebar">
+                            <div class="call-to-book">
+                                <i class="awe-icon awe-icon-phone"></i>
+                                <em>Call to book</em>
+                                <span>+1-888-8765-1234</span>
+                            </div>
+                            <div class="booking-info">
+                                <h3>Booking info</h3>
+                                <div class="form-group">
+                                    <div class="form-elements form-adult">
+                                        <label>Adult</label>
+                                        <div class="form-item">
+                                            <select class="awe-select">
+                                                <option>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                        </div>
+                                        <span>12 yo and above</span>
+                                    </div>
+                                    <div class="form-elements form-kids">
+                                        <label>Kids</label>
+                                        <div class="form-item">
+                                            <select class="awe-select">
+                                                <option>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                        </div>
+                                        <span>11 and under</span>
+                                    </div>
+                                </div>
+                                <div class="form-baggage-weight">
+                                    <label>Extra baggage weight / person</label>
+                                    <div class="form-item">
+                                        <select class="awe-select">
+                                            <option>15 kg - $20</option>
+                                            <option>15 kg - $20</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-item">
+                                        <select class="awe-select">
+                                            <option>25 kg - $40</option>
+                                            <option>25 kg - $40</option>
+                                        </select>
+                                    </div>
+                                    <span>Cabin 7kg/person for free</span>
+                                </div>
+                                <div class="price">
+                                    <em>Total for this booking</em>
+                                    <span class="amount">$5,923</span>
+                                </div>
+                                <div class="form-submit">
+                                    <div class="add-to-cart">
+                                        <button type="submit">
+                                            <i class="awe-icon awe-icon-cart"></i>Add this to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- FOOTER PAGE -->
+       <footer id="footer-page">
+            <div class="container">
+                <div class="row">
+                    <!-- WIDGET -->
+                    <div class="col-md-3">
+                        <div class="widget widget_contact_info">
+                            <div class="widget_background">
+                                <div class="widget_background__half">
+                                    <div class="bg"></div>
+                                </div>
+                                <div class="widget_background__half">
+                                    <div class="bg"></div>
+                                </div>
+                            </div>
+                            <div class="logo">
+                                <a href="index.html"><img src="images/logo-footer.png" alt="Rumbostar" title="Rumbostar"></a>
+                            </div>
+                            <div class="widget_content">
+                                <p>25 California Avenue, Santa Monica, California. USA</p>
+                                <p>+1-888-8765-1234</p>
+                                <a href="mailto:contact@rumbostar.com">contact@rumbostar.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END / WIDGET -->
+
+                    <!-- WIDGET -->
+                    <div class="col-md-2">
+                        <div class="widget widget_categories">
+                          <h3> Airline Partners</h3>
+                            <ul>
+                                <li>Citilink</li>
+                                <li>Lion Air</li>
+                                <li>Air Asia</li>
+                                <li>Batik Air</li>
+                                <li>Wings Air</li>
+                                <li>Sriwijaya Air</li>
+                                <li>Garuda Indonesia</li>
+                                <li><a href="#">View Other Flights</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END / WIDGET -->
+
+                    <!-- WIDGET -->
+                    <div class="col-md-2">
+                      <div class="widget widget_categories">
+                        <h3>Payment Partners</h3>
+                        <ul>
+                          <li>Visa / Master</li>
+                          <li>Mandiri clickpay</li>
+                          <li>BCA KlikPay</li>
+                          <li>CIMB Clicks</li>
+                          <li>ATM Bersama</li>
+                          <li>IB Muamalat</li>
+                          <li><a href="#">View Other Payment</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- END / WIDGET -->
+                    <!-- WIDGET -->
+                    <div class="col-md-2">
+                      <div class="widget widget_categories">
+                        <h3>About Rumbostar</h3>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                          <li><a href="#">Affiliate</a></li>
+                          <li><a href="#">Help</a></li>
+                          <li><a href="#">How to Order</a></li>
+                          <li><a href="#">Terms &amp; Conditions</a></li>
+                          <li><a href="#">Subscribe</a></li>
+                          <li><a href="#">Careers</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- END / WIDGET -->
+
+                  
+
+                    <!-- WIDGET -->
+                    <div class="col-md-3">
+                        <div class="widget widget_follow_us">
+                            <div class="widget_content">
+                                <p>Call Center Rumbostar.com</p>
+                                <span class="phone">099-099-000</span>
+                                <div class="awe-social">
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END / WIDGET -->
+                </div>
+                <div class="copyright">
+                    <p>©2016 Rumbostar, All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- END / FOOTER PAGE -->
+
+    </div>
+    <!-- END / PAGE WRAP -->
+
+    <!-- LOAD JQUERY -->
+    <script type="text/javascript" src="js/lib/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.owl.carousel.js"></script>
+    <script type="text/javascript" src="js/lib/theia-sticky-sidebar.js"></script>
+    <!--<script type="text/javascript" src="js/lib/jquery.magnific-popup.min.js"></script>-->
+    <script type='text/javascript' src="js/lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+   
+
+
+<span id="top-link-block" class="affix">
+<a class="well well-sm" href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+<i class="fa fa-chevron-up" aria-hidden="true"></i>
+
+</a>
+</span>
+<script type="text/javascript">
+
+// Only enable if the document has a long scroll bar
+// Note the window height + offset
+if ( ($(window).height() + 400) < $(document).height() ) {
+    $('#top-link-block').removeClass('hidden').affix({
+        // how far to scroll down before link "slides" into view
+        offset: {top:100}
+    });
+}
+</script>
+  <script>
+    $('.carousel').carousel({
+        interval: 4000 //changes the speed
+    })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+$(document).ready(function(){
+
+	$("#user-reg-form").submit(function(){
+		$(".form-error").html('');
+		var validArr = [];
+		if($("#id-first-name").val().trim() ==''){
+			$("#id-error-firstname").html("Please enter first name.");
+			validArr[0] = false;
+		}else if($("#id-first-name").val().length>50){
+			$("#id-error-firstname").html("First name maximum length is 50 characters.");
+			validArr[0] = false;
+		}else{
+			 var firstname = $("#id-first-name").val();
+			 var charRegExp = /^[a-zA-Z ']+$/;
+			 if (firstname.search(charRegExp)!=0 ){
+			 		$("#id-error-firstname").html("Invalid first name entered.");				   
+				    validArr[0] = false;
+				}
+		}
+
+		if($("#id-last-name").val().trim() ==''){
+			$("#id-error-lastname").html("Please enter last name.");
+			validArr[1] = false;
+		}else if($("#id-last-name").val().length>50){
+			$("#id-error-lastname").html("Last name maximum length is 50 characters.");
+			validArr[1] = false;
+		}else{
+			 var lastname = $("#id-last-name").val();
+			 var charRegExp = /^[a-zA-Z ']+$/;
+			 if (lastname.search(charRegExp)!=0 ){
+			 		$("#id-error-lastname").html("Invalid last name entered.");				   
+				    validArr[1] = false;
+				}
+		}
+
+		/*if($("#id-name").val().trim() ==''){
+			$("#id-error-name").html("Please enter name.");
+			validArr[0] = false;
+		}else if($("#id-name").val().length>50){
+			$("#id-error-name").html("Name maximum length is 50 characters.");
+			validArr[0] = false;
+		}else{
+			 var username = $("#id-name").val();
+			 var charRegExp = /^[a-zA-Z ']+$/;
+			 if (username.search(charRegExp)!=0 ){
+			 		$("#id-error-name").html("Please enter valid name.");				   
+				    validArr[0] = false;
+				}
+		}*/
+
+		if($("#id-email").val().trim() ==''){
+			$("#id-error-email").html("Please enter email.");
+			validArr[2] = false;
+		}else if(!ValidateEmail_front($("#id-email").val())){
+			$("#id-error-email").html("Please enter valid email.");
+			validArr[2] = false;
+		}else if(!valid_first_letter($("#id-email").val())){
+			$("#id-error-email").html("Please enter valid email.");
+			validArr[2] = false;
+		}
+
+		if($("#id-number").val().trim() =='' && $("#countriesSelects").val() == ''){
+			$("#id-error-number").html("Please select country code and enter contact number.");
+			validArr[3] = false;
+		}else if($("#id-number").val().length <4 || $("#id-number").val().length>16){
+			$("#id-error-number").html("Please enter min 4 and max 16 digits contact number.");
+			validArr[3] = false;
+		}
+		
+		if($("#id-password").val().trim() ==''){
+			$("#id-error-password").html("Please enter password.");
+			validArr[4] = false;
+		}else if ($("#id-password").val().length<6){
+			$("#id-error-password").html("Your password must be at least 6 characters long.");
+			validArr[4] = false;
+		}
+
+		if($("#id-conpassword").val().trim() ==''){
+			$("#id-error-conpassword").html("Please enter confirm password.");
+			validArr[5] = false;
+		}else if($("#id-conpassword").val() != $("#id-password").val()){
+			$("#id-error-conpassword").html("Password and confirm password do not match.");
+			validArr[5] = false;
+		}
+
+		
+		$(".form-error").css("color","red");
+		for(i=0; i<validArr.length;i++){
+			if(validArr[i] == false){
+				return false;
+			}
+		}
+	});
+
+
+	$("#user-login-form").submit(function(){ 
+		console.log('hiii');
+		//var bookdata = $("#bookVal").val();
+		var validArr = [];
+		$(".form-error").html('');
+		$(".form-error").css('color','red');
+		if($("#id-email").val().trim() ==''){
+			$("#id-error-email").html("Please enter email.");
+			validArr[0] = false;
+		}else if(!ValidateEmail_front($("#id-email").val())){
+			$("#id-error-email").html("Please enter valid email.");
+			validArr[0] = false;
+		}
+		if($("#id-password").val() ==''){
+			$("#id-error-password").html("Please enter password.");
+			validArr[1] = false;
+		}
+		
+		for(i=0; i<validArr.length;i++){
+			if(validArr[i] == false){
+				return false;
+			}
+		} 
+		
+
+		var formData = $("#user-login-form").serialize();
+		/*if(bookdata != '' && bookdata != undefined){
+			formData['book'] = 'bookdata';
+		}*/
+		
+		$.ajax({
+			url:site_url+'user/checklogin/',
+			data:formData,
+			type:'post',
+			dataType:'json',
+			success : function(data){ 
+				console.log(data);
+				 if(data.status == 'success'){ 
+					location.href = site_url+'user-profile';
+					return false;
+				}
+				if(data.varlidationError.email !=''){ 
+					$("#id-error-email").html(data.varlidationError.email);
+				}
+				if(data.varlidationError.password !=''){
+					$("#id-error-password").html(data.varlidationError.password);
+				}
+			//}else{
+				$("#error_password").html(data.msg);
+					//}
+					
+				return false;	
+				//}
+			}
+		});
+		return false;
+	});
+	
+	$("#forgot-password-link").click(function(){
+		$(".form-error").html('');
+		$("#user-login-form").hide();
+		$("#dont-have-account").hide();
+		$("#forgot-psw-form").show();
+	});
+	$("#back_login_form").click(function(){
+		$(".form-error").html('');
+		$("#user-login-form").show();
+		$("#dont-have-account").show();
+		$("#forgot-psw-form").hide();
+	});
+
+	$("#forgot-psw-form").submit(function(){
+		$(".form-error").html('');
+		$("#error_forgot_password").html();
+		$(".form-error").css('color','red');
+		var emailid = $('[name="femail"]').val().trim();
+		if($('[name="femail"]').val().trim() ==''){ 
+				$("#id-error-femail").html("Please enter email.");
+				return false;
+		}else if(!ValidateEmail_front($('[name="femail"]').val())){
+			$("#id-error-femail").html("Please enter valid email.");
+				return false;
+		}
+		
+		$.ajax({
+				url: site_url+'user/forgotpassword',
+				data:{emailid:emailid},
+				type:"post",
+				success: function(data){
+					if(data.trim() !=1){
+						$("#error_forgot_password").html(data);	
+					}else{
+							//return false;
+							location.reload();
+					}
+				}
+		});
+		return false;
+	});
+
+	$("#reset-password-form").submit(function(){
+		var validArr = [];
+		$(".form-error").html('');
+		$(".form-error").css('color','red');
+		
+		if($("#id-newpswd").val() ==''){
+			$("#id-error-newpswd").html("Please enter new password.");
+			validArr[0] = false;
+		}else if ($("#id-newpswd").val().length< 6){ 
+			$("#id-error-newpswd").html("Your password must be at least 6 characters long. ");
+			validArr[0] = false;
+		}
+
+		if($("#id-cnewpswd").val() ==''){
+			$("#id-error-cnewpswd").html("Please enter confirm password.");
+			validArr[1] = false;
+		}else if($("#id-cnewpswd").val() != $("#id-newpswd").val()){
+			$("#id-error-cnewpswd").html("New password and confirm password do not match.");
+			validArr[1] = false;
+		}
+
+		for(i=0; i<validArr.length;i++){
+			if(validArr[i] == false){
+				return false;
+			}
+		} 
+
+	});
+	
+/*
+Smita
+following function and ajax call use for when user login to social media then send user type
+28-12-2017 code start 
+*/
+
+var data = '';
+$('input[name=users_type]').change(function(){
+
+var value = $( 'input[name=users_type]:checked' ).val();
+if(value == 'USER')
+{
+	data = {'user_type' : value}
+}else if(value == 'AGENT'){
+	data = {'user_type' : value}
+}
+
+  $.ajax({
+        type: 'POST',
+        url: site_url+"user/userTypeSession",
+        data: data,
+        dataType: "json",
+        success: function(resultData) {
+         console.log(resultData); 
+         if(resultData == 'success')
+         {
+          console.log(resultData);
+         }
+       }
+  });
+});
+
+
+var user = $('#radio-user').val(); 
+if(user != '' && user != undefined){ 
+ if(user != ''){
+ 	 data = {'user_type' : user}
+ }  
+  $.ajax({
+        type: 'POST',
+        url: site_url+"user/userTypeSession",
+        data: data,
+        dataType: "json",
+        success: function(resultData) {
+         console.log(resultData); 
+         if(resultData == 'success')
+         {
+          console.log(resultData);
+         }
+       }
+  });
+}
+/*
+Smita
+following function and ajax call use for when user login to social media then send user type
+28-12-2017 code end 
+*/
+
+/*
+Smita
+following function and ajax call use for when user Register as a "Agent and User " a to social media then send user type
+28-12-2017 code start 
+*/
+var user_type_register = $('#social_user_type').val();
+if(user_type_register != '' && user_type_register != undefined){
+data = {'user_type' : user_type_register}
+	$.ajax({
+        type: 'POST',
+        url: site_url+"user/userTypeSession",
+        data: data,
+        dataType: "json",
+        success: function(resultData) {
+         console.log(resultData); 
+         if(resultData == 'success')
+         {
+           console.log(resultData);
+         }
+       }
+  });
+}
+
+
+});
+
+
+

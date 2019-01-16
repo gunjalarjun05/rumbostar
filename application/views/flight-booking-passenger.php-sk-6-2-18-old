@@ -1,0 +1,454 @@
+<?php //echo '<pre>';print_r($arr_flight_booking); ?>
+<meta property="og:title" content="Join the best company in the world!" />
+<meta property="og:url" content="http://www.sharethis.com" />
+<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
+<meta property="og:description" content="ShareThis is its people. It's imperative that we hire smart,innovative people who can work intelligently as we continue to disrupt the very category we created. Come join us!" />
+<meta property="og:site_name" content="ShareThis" />
+
+
+<section class="user-dashboard-sec">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"><?php $this->load->view('message');?></div>
+				<div class="col-md-12">
+					<?php $this->load->view('user-left-menu');?>
+					<div class="col-md-8 col-sm-8 info-right-sec">
+					<?php if(isset($arr_flight_booking) && count($arr_flight_booking[0])>0 && $arr_flight_booking[0] != ''){ ?>					
+						<div class="inner-sec">
+							<div class="sec_details">
+								<h3>Flight Booking Details</h3>
+								 <?php 
+		                             $ShareUrl = urlencode(site_url());
+		                             $Title = 'Rumbostar   - '. $arr_flight_booking[0]->flight_name.'-'.$arr_flight_booking[0]->flight_no.'    '.$arr_flight_booking[0]->depart_from.'-'.$arr_flight_booking[0]->depart_to.'  @'.$arr_flight_booking[0]->depart_date ;
+		                             $Media = '';//$resultd->largeThumbnailURL;
+		                            ?> 
+
+								<a href="javascript:void(0)" onclick="shareinsocialmedia('http://twitter.com/home?status=<?php echo strip_tags($Title); ?>+<?php echo $ShareUrl; ?>+<?php echo $Media; ?>')" ><i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+								<a href="javascript:void(0)" onclick="shareinsocialmedia('https://plus.google.com/share?url=<?php echo 'http://exceptionaire.co/rumbostar/booking/flight-booking-passenger/'.$Title; ?>')">
+                              <i class="fa fa-google-plus" aria-hidden="true"></i></a>
+
+								<div class="cfix infowrapp">            
+						            <p class="margin-bottom4">
+						               
+						                <label>Customer Name</label>
+						                <span>: <?php echo ($arr_flight_booking[0]->cust_name)?$arr_flight_booking[0]->cust_name : 'N/A'; ?></span>
+						                
+						            </p>
+						            
+						           <!--  <p class="margin-bottom4" id="">
+						              <span>
+						                    <label>Customer Last Name</label>
+						                    <span>: Right</span>
+						                </span>
+						               
+						            </p> -->
+						            <p class="margin-bottom4" id="">
+						              <span>
+						                    <label>Customer Email ID</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->cust_email)?$arr_flight_booking[0]->cust_email : 'N/A'; ?></span>
+						                </span>
+						               
+						            </p>
+						            
+						            <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Customer mobile number</label>
+						                    <span>
+						                     <?php echo ($arr_flight_booking[0]->country_code)?$arr_flight_booking[0]->country_code : 'N/A'; ?> - 
+						                     <?php echo ($arr_flight_booking[0]->cust_phone)?$arr_flight_booking[0]->cust_phone : 'N/A'; ?> </span>
+						                </span>
+						               
+						            </p>
+						             <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Flight Name</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->flight_name)?$arr_flight_booking[0]->flight_name : 'N/A'; ?></span>
+						                </span>
+						               
+						            </p>
+						           <!--  <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Customer mobile number</label>
+						                    <span>: 3246514684</span>
+						                </span>
+						               
+						            </p> -->
+						            <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Flight Type</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->flight_way)?$arr_flight_booking[0]->flight_way : 'N/A'; ?></span>
+						                </span>
+						               
+						            </p>
+						            <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Trip Type</label>
+						                    <span>: Type 2</span>
+						                </span>
+						               
+						            </p>
+						            <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Class</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->flight_class)?$arr_flight_booking[0]->flight_class : 'N/A'; ?></span>
+						                </span>
+						               
+						            </p>
+						            <!-- <p class="margin-bottom4" id="">
+						                <span>
+						                    <label>Total passengers</label>
+						                    <span class="passentype">: Adults - 4&nbsp;&nbsp;</span>
+						                    <span class="passentype">childern - 5</span>
+
+						                </span>
+						               
+						            </p> -->
+						            
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Departure Date</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_date)?$arr_flight_booking[0]->depart_date : 'N/A'; ?> </span>
+						                </span>                
+						          
+						            </p>
+						           <!--  <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Return Date</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_date)?$arr_flight_booking[0]->depart_date : 'N/A'; ?></span>
+						                </span>                
+						          
+						            </p> -->
+						        </div>
+					    	</div>
+					    	<?php if(isset($arr_flight_booking[0]->flight_way) && $arr_flight_booking[0]->flight_way == 'depart'){ ?>
+					        <div class="sec_details">
+						        <h3>Departure</h3>
+						        <div class="infowrapp" id="">
+						        	<p class="margin-bottom4" id="">
+						               <span>
+						                    <label>From</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_from)?$arr_flight_booking[0]->depart_from : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>To</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_to)?$arr_flight_booking[0]->depart_to : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Flight name and no</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->flight_name)?$arr_flight_booking[0]->flight_name : 'N/A'; ?>
+						                    	- <?php echo ($arr_flight_booking[0]->flight_no)?$arr_flight_booking[0]->flight_no : 'N/A'; ?>
+						                    </span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Flight logo</label>
+						                    <span>: <i class="fa fa-plane" aria-hidden="true"></i></span>
+						                </span>                
+						            </p>
+							        <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Departure location and time</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_time)?$arr_flight_booking[0]->depart_time : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Arrival location and time</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->arrive_time)?$arr_flight_booking[0]->arrive_time : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Duration</label>
+									<?php 
+							 		$deptTime = ($arr_flight_booking[0]->depart_time)?$arr_flight_booking[0]->depart_time : '0';
+                          			$arriveTime = ($arr_flight_booking[0]->arrive_time)?$arr_flight_booking[0]->arrive_time : '0';
+					                    if($deptTime != 0 && $arriveTime != 0)
+				                          {
+				                            echo  $duration = getTimeDiff($deptTime,$arriveTime);
+				                          }else{
+				                            echo $duration = '0';
+				                          } ?>
+				                          </span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Flight status</label>
+						                    <span>: Direct</span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Facilities provided</label>
+						                    <span>: Meal</span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Price </label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->booking_amount)? number_format($arr_flight_booking[0]->booking_amount) : 'N/A'; ?> </span>
+						                    
+						                </span>                
+						            </p>
+							    </div>
+							</div>
+							<?php } ?>
+							<?php if(isset($arr_flight_booking[0]->flight_way) && $arr_flight_booking[0]->flight_way == 'return'){ ?>
+							<div class="sec_details">
+							    <h3>Return</h3>
+						        <div class="infowrapp" id="">
+						        	<p class="margin-bottom4" id="">
+						               <span>
+						                    <label>From</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_from)?$arr_flight_booking[0]->depart_from : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>To</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_to)?$arr_flight_booking[0]->depart_to : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Flight name and no</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->flight_name)?$arr_flight_booking[0]->flight_name : 'N/A'; ?>
+						                    	- <?php echo ($arr_flight_booking[0]->flight_no)?$arr_flight_booking[0]->flight_no : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Flight logo</label>
+						                    <span>: <i class="fa fa-plane" aria-hidden="true"></i></span>
+						                </span>                
+						            </p>
+							        <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Departure location and time</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->depart_time)?$arr_flight_booking[0]->depart_time : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Arrival location and time</label>
+						                    <span>: <?php echo ($arr_flight_booking[0]->arrive_time)?$arr_flight_booking[0]->arrive_time : 'N/A'; ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Duration</label>
+						                    <span>: <?php 
+							 				$deptTime = ($arr_flight_booking[0]->depart_time)?$arr_flight_booking[0]->depart_time : '0';
+                          					$arriveTime = ($arr_flight_booking[0]->arrive_time)?$arr_flight_booking[0]->arrive_time : '0';
+					                    if($deptTime != 0 && $arriveTime != 0)
+				                          {
+				                            echo  $duration = getTimeDiff($deptTime,$arriveTime);
+				                          }else{
+				                            echo $duration = '0';
+				                          } ?></span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Flight status</label>
+						                    <span>: Direct</span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Facilities provided</label>
+						                    <span>: Meal</span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+						               <span>
+						                    <label>Price per person</label>
+						                    <span>: 200$</span>
+						                </span>                
+						            </p>
+							    </div>
+							    
+							</div>
+							<?php } ?>
+							<div class="sec_details last">
+								<h3>Passenger Details</h3>
+								<div class="infowrapp">
+									<div class="table-responsive gentable">
+										<table class="table">
+											<tr>
+												<th>Title</th>
+												<th>Passenger Name</th>
+												<th>Gender</th>
+												<th>Status</th>
+												<th>Coach</th>
+												<th>Seat No</th>
+											</tr>
+											<tr>
+												<td><?php echo ($arr_flight_booking[0]->title)?$arr_flight_booking[0]->title : 'N/A'; ?></td>
+												<td>
+
+											<?php echo ($arr_flight_booking[0]->first_name)?$arr_flight_booking[0]->first_name : 'N/A'; ?>
+
+											<?php echo ($arr_flight_booking[0]->last_name)?$arr_flight_booking[0]->last_name : 'N/A'; ?>
+								 			   </td>
+												<td>Male</td>
+												<td>CNF</td>
+												<td>G5</td>
+												<td>20</td>
+											</tr>
+											<!-- <tr>
+												<td>1</td>
+												<td>Jhone Right</td>
+												<td>Male</td>
+												<td>CNF</td>
+												<td>G5</td>
+												<td>20</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td>Jhone Right</td>
+												<td>Male</td>
+												<td>CNF</td>
+												<td>G5</td>
+												<td>20</td>
+											</tr> -->
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="sec_details last">
+								<div class="infowrapp">
+							    	<p class="margin-bottom4" id="">
+						               <span class="tot_pri">
+						                    <label>Total Price</label>
+						                    <span>: 4000$</span>
+						                </span>                
+						            </p>
+						            <p class="margin-bottom4" id="">
+					                    <span class="canbook_btn">
+					                    	<a data-toggle="modal" data-target="#cancel_bookmodal" class="ma-green-btn inline-block" id="">Cancel Booking</a>
+					                    </span>           
+						            </p>
+							    </div>
+							</div>    
+						</div>
+						<?php } ?>
+						<!-- Cancel Booking modal -->
+						<div class="modal fade" id="cancel_bookmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+									<h3 class="modal-title" id="lineModalLabel">Cancel booking</h3>
+								</div>
+								<div class="modal-body">
+									
+						            <!-- content goes here -->
+									<form>
+						              <div class="form-group">
+						                <label for="">Date</label>
+						                <input class="form-control awe-calendar hasDatepicker" name="birth_date" id="birth_date" value="" type="date">
+						              </div>
+						              <div class="form-group">
+						                <label for="">Reason for cancellation
+						                <span class="asterisk">*</span>
+						               </label>
+						                <textarea class="form-control"></textarea>
+						              </div>
+						              
+						              <button type="submit" class="ma-green-btn inline-block">Submit</button>
+						            </form>
+
+								</div>
+								
+							</div>
+						  </div>
+						</div>
+
+
+ <div id="fb-root"></div>
+<a href="http://exceptionaire.co/rumbostar/" data-image="https://i.stack.imgur.com/br4Br.png" data-title="Article Title" data-desc="Some description for this article" class="fb_share"><!-- <i class="fa fa-facebook" aria-hidden="true"></i> -->
+  <img src="https://i.stack.imgur.com/br4Br.png" alt="" width="50" height="50"> 
+</a> 
+
+
+<div class="bookmarklet">
+<a href="
+	javascript:(
+	  function(){
+		var w=480;var h=380;
+		var x=Number((window.screen.width-w)/2);
+		var y=Number((window.screen.height-h)/2);
+		window.open('https://plusone.google.com/_/+1/confirm?hl=en&url='+encodeURIComponent(location.href)+'
+			&title='+encodeURIComponent(rumbostar),'','width='+w+',height='+h+',left='+x+',top='+y+',
+			scrollbars=no');
+  	  })();">
+	Share to Google+</a>
+</div>
+
+
+					</div>
+				</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<script type="text/javascript">
+	window.fbAsyncInit = function() {
+    FB.init({
+        appId: '316724998844961',
+        status: true,
+        cookie: true,
+        xfbml: true
+    });
+};
+
+(function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
+
+function postToFeed(title, desc, url, image) {
+    var obj = {method: 'feed',link: url, picture: image,name: title,description: desc};
+    function callback(response) {alert(response);}
+    FB.ui(obj, callback);
+
+}
+
+var fbShareBtn = document.querySelector('.fb_share');
+fbShareBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var pageURL = $(location).attr("href");
+
+    //alert(pageURL);
+    var title = fbShareBtn.getAttribute('data-title'),
+        desc = fbShareBtn.getAttribute('data-desc'),
+        url = "http://localhost/rumbostar/booking/flight-booking-passenger?hello",
+        image = fbShareBtn.getAttribute('data-image');
+    postToFeed(title, desc, url, image);
+
+    return false;
+});
+
+/************************************************/
+twttr.widgets.load();
+
+ twttr.ready(function (twttr) {
+    twttr.events.bind('tweet', function (event) {
+    	alert("paso");
+    });
+});
+
+
+function shareinsocialmedia(url){
+  window.open(url,'sharein','toolbar=0,status=0,width=648,height=395');
+  return true;
+  }
+</script>

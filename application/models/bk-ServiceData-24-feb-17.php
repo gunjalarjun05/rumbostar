@@ -1,0 +1,299 @@
+<?php
+class ServiceData extends CI_Model {
+
+  public function __construct(){
+    // Call the CI_Model constructor
+    parent::__construct();               
+  }
+
+
+
+
+  public function get_service_result($result){
+    $resultArr = array();   
+    if(isset($result->session_id) && $result->session_id!=''){
+        $resultArr['session_id'] = $result->session_id;
+        $resultArr['search_info']['akses_kode'] = $result->search_info->akses_kode;
+        $resultArr['search_info']['roundtrip'] = $result->search_info->roundtrip;
+        $resultArr['search_info']['from'] = $result->search_info->from;
+        $resultArr['search_info']['to'] = $result->search_info->to;
+        $resultArr['search_info']['depart'] = $result->search_info->depart;
+        $resultArr['search_info']['return'] = $result->search_info->return;
+        $resultArr['search_info']['adult'] = $result->search_info->adult;
+        $resultArr['search_info']['child'] = $result->search_info->child;
+        $resultArr['search_info']['infant'] = $result->search_info->infant;
+        $resultArr['search_info']['source'] = $result->search_info->source;
+
+        if(count($result->schedule->depart)>0){
+            $i=0;
+            foreach ($result->schedule->depart as $key => $value) {
+                # code...
+                $resultArr['airlineIfo'][$i]['airline_id'] = $value->airline_id;
+                $resultArr['airlineIfo'][$i]['airline_name']  = $value->airline_name;
+                $resultArr['airlineIfo'][$i]['type']  = $value->type;
+                $resultArr['airlineIfo'][$i]['from']  = $value->from;
+                $resultArr['airlineIfo'][$i]['to']  = $value->to;
+                $resultArr['airlineIfo'][$i]['fno']  = $value->fno;
+                $resultArr['airlineIfo'][$i]['date']  = $value->date;
+                $resultArr['airlineIfo'][$i]['etd']  = $value->etd;
+                $resultArr['airlineIfo'][$i]['eta']  = $value->eta;
+                $resultArr['airlineIfo'][$i]['fly_time']  = $value->fly_time;
+                $resultArr['airlineIfo'][$i]['class']  = $value->class;
+              
+                if(isset($value->connecting_flight) && count($value->connecting_flight)>0){ 
+                    $j=0;
+                    foreach ($value->connecting_flight as $ckey => $cvalue) {
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['airline_id']  = $cvalue->airline_id;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['airline_name']  = $cvalue->airline_name;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['from']  = $cvalue->from;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['to']  = $cvalue->to;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['fno']  = $cvalue->fno;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['date']  = $cvalue->date;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['etd']  = $cvalue->etd;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['eta']  = $cvalue->eta;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['connecting_flight'][$j]['fly_time']  = $cvalue->fly_time;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['class']  = $cvalue->class;       
+                        $j++;
+                    }  
+                }
+                $i++;
+            }
+        }
+        $k= $i;
+        
+        if(isset($result->schedule->return) && count($result->schedule->return)>0){
+            $i=$k;
+            foreach ($result->schedule->return as $key => $value) {
+                # code...
+                $resultArr['airlineIfo'][$i]['airline_id'] = $value->airline_id;
+                $resultArr['airlineIfo'][$i]['airline_name']  = $value->airline_name;
+                $resultArr['airlineIfo'][$i]['type']  = $value->type;
+                $resultArr['airlineIfo'][$i]['from']  = $value->from;
+                $resultArr['airlineIfo'][$i]['to']  = $value->to;
+                $resultArr['airlineIfo'][$i]['fno']  = $value->fno;
+                $resultArr['airlineIfo'][$i]['date']  = $value->date;
+                $resultArr['airlineIfo'][$i]['etd']  = $value->etd;
+                $resultArr['airlineIfo'][$i]['eta']  = $value->eta;
+                $resultArr['airlineIfo'][$i]['fly_time']  = $value->fly_time;
+                $resultArr['airlineIfo'][$i]['class']  = $value->class;
+              
+                if(isset($value->connecting_flight) && count($value->connecting_flight)>0){ 
+                    $j=0;
+                    foreach ($value->connecting_flight as $ckey => $cvalue) {
+                         # code...
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['airline_id']  = $cvalue->airline_id;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['airline_name']  = $cvalue->airline_name;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['from']  = $cvalue->from;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['to']  = $cvalue->to;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['fno']  = $cvalue->fno;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['date']  = $cvalue->date;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['etd']  = $cvalue->etd;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['eta']  = $cvalue->eta;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['connecting_flight'][$j]['fly_time']  = $cvalue->fly_time;
+                        $resultArr['airlineIfo'][$i]['connecting_flight'][$j]['class']  = $cvalue->class;       
+                        $j++;
+                    }  
+                }
+                $i++;
+            }
+        }
+                
+       
+    }
+   return $resultArr;
+  }
+
+
+  public function get_flight_sorted_result($array,$sortBy,$min=false,$max=false){
+    $newArr = array();
+    $jSonDecode = json_decode($array);
+    
+    $newArr['session_id'] = $jSonDecode->session_id;
+    $newArr['search_info']= $jSonDecode->search_info;
+    switch ($sortBy) {
+        case 1:
+            usort($jSonDecode->schedule->depart, function ($a,$b) {
+                return strtolower($a->airline_name) > strtolower($b->airline_name);
+            });
+            if(isset($jSonDecode->schedule->return) && count($jSonDecode->schedule->return)>0){
+                usort($jSonDecode->schedule->return, function ($a,$b) {
+                    return strtolower($a->airline_name) > strtolower($b->airline_name);
+                });
+            }
+            break; 
+        case 2:
+            usort($jSonDecode->schedule->depart, function ($a,$b) {
+                return strtolower($a->airline_name) < strtolower($b->airline_name);
+            });
+            if(isset($jSonDecode->schedule->return) && count($jSonDecode->schedule->return)>0){
+                usort($jSonDecode->schedule->return, function ($a,$b) {
+                    return strtolower($a->airline_name) < strtolower($b->airline_name);
+                });
+            }
+            break;
+        case 3:
+            usort($jSonDecode->schedule->depart, function ($a,$b) {
+                if ( $a->class[0]->price == $b->class[0]->price )
+                    return 0;
+                if ( $a->class[0]->price < $b->class[0]->price )
+                     return -1;
+                return 1;
+            });
+            if(isset($jSonDecode->schedule->return) && count($jSonDecode->schedule->return)>0){
+                usort($jSonDecode->schedule->return, function ($a,$b) {
+                    if ( $a->class[0]->price == $b->class[0]->price )
+                        return 0;
+                    if ( $a->class[0]->price < $b->class[0]->price )
+                         return -1;
+                    return 1;
+                });
+            }
+            break;
+        case 4:
+            usort($jSonDecode->schedule->depart, function ($a,$b) {
+                if ( $a->class[0]->price == $b->class[0]->price )
+                    return 0;
+                if ( $a->class[0]->price > $b->class[0]->price )
+                     return -1;
+                return 1;
+            });
+             if(isset($jSonDecode->schedule->return) && count($jSonDecode->schedule->return)>0){
+                usort($jSonDecode->schedule->return, function ($a,$b) {
+                    if ( $a->class[0]->price == $b->class[0]->price )
+                        return 0;
+                    if ( $a->class[0]->price > $b->class[0]->price )
+                         return -1;
+                    return 1;
+                });
+             }
+            break;
+        case 5:
+            $newArrx['depart'] =  array_filter($jSonDecode->schedule->depart, function($objArr) use($min,$max){                
+               if (isset($objArr->class)) {
+                    foreach ($objArr->class as $admin) {
+                        return ($admin->price >= $min && $admin->price <= $max);
+                    }
+                }                
+            });
+            if(isset($jSonDecode->schedule->return) && count($jSonDecode->schedule->return)>0){
+                    $newArrx['return'] =  array_filter($jSonDecode->schedule->return, function($objArr) use($min,$max){                
+                    if (isset($objArr->class)) {
+                        foreach ($objArr->class as $admin) {
+                            return ($admin->price >= $min && $admin->price <= $max);
+                        }
+                    }                
+                });
+            }
+            break;       
+        default:
+            break;
+    }
+    
+    if($sortBy == '5'){
+        $newArrx['depart'] = array_values($newArrx['depart']);
+        if(isset($newArrx['return']) && count($newArrx['return'])>0)
+        $newArrx['return'] = array_values($newArrx['return']);
+        $clasax = (object)$newArrx;
+        $newArr['schedule']  =  $clasax;
+        $clasa = (object)$newArr;       
+        return json_encode($clasa);
+    }else{  
+     return json_encode($jSonDecode); 
+    }
+}
+  public function get_hotel_sorted_result($array,$sortBy){
+    $newArr = array();
+    $jSonDecode = json_decode($array);
+    $newArr['session_id'] = $jSonDecode->session_id;
+    $newArr['search_info']= $jSonDecode->search_info;
+    switch ($sortBy) {
+        case 1:
+            usort($jSonDecode->result_data, function ($a,$b) {
+                return strtolower($a->name) > strtolower($b->name);
+            });
+            break; 
+        case 2:
+            usort($jSonDecode->result_data, function ($a,$b) {
+                return strtolower($a->name) < strtolower($b->name);
+            });
+            break;
+        case 3:
+            usort($jSonDecode->result_data, function ($a,$b) {
+                if ( $a->price == $b->price )
+                    return 0;
+                if ( $a->price < $b->price )
+                     return -1;
+                return 1;
+            });
+            break;
+        case 4:
+            usort($jSonDecode->result_data, function ($a,$b) {
+                if ( $a->price == $b->price )
+                    return 0;
+                if ( $a->price > $b->price )
+                     return -1;
+                return 1;
+            });
+            break;       
+        default:
+            break;
+    }
+    
+    $newArr['result_data']= $jSonDecode->result_data;
+    $clasa = (object)$newArr;
+    return json_encode($clasa);
+  }
+  
+  public function get_hotel_filter_result($array,$FilterByType=false,$FilterByRating=false,$FilterByServices=false,$filterByPrice=false){
+    $newArr = array();
+    $jSonDecode = json_decode($array);
+    $newArr['session_id'] = $jSonDecode->session_id;
+    $newArr['search_info']= $jSonDecode->search_info;
+    $filterNewArr = $filterNewArr1 = $filterNewArr2 = $filterNewArr3 = array();
+    if(is_array($FilterByType) && count($FilterByType)>0){
+        $filterNewArr =  array_filter($jSonDecode->result_data, function($objArr) use($FilterByType){                
+            if (isset($objArr->structureType) && in_array($objArr->structureType, $FilterByType)) {
+               return 1;               
+            }                
+        });
+        
+    }
+    if(is_array($FilterByServices) && count($FilterByServices)>0){
+        $filterNewArr1 =  array_filter($jSonDecode->result_data, function($objArr) use($FilterByServices){                
+            if (count($objArr->amenities)>0) {
+                foreach ($objArr->amenities as $admin) {
+                    return in_array($admin, $FilterByServices);
+                }
+            }              
+        });        
+    }
+	//echo $FilterByRating ;die;
+    if(isset($FilterByRating) && $FilterByRating >0){
+        $filterNewArr2 =  array_filter($jSonDecode->result_data, function($objArr) use($FilterByRating){                
+            
+            if (count($objArr->review_rating)>0) {
+                 
+                    return $objArr->review_rating->reviewOverall == $FilterByRating; 
+                
+            }              
+        });
+        
+    }
+    if(is_array($filterByPrice) && count($filterByPrice)>0){
+        if($filterByPrice[0] !='' && $filterByPrice[1] !=''){
+            $filterNewArr3 =  array_filter($jSonDecode->result_data, function($objArr) use($filterByPrice){                
+                return ($objArr->price_info->total_price >= $filterByPrice[0] && $objArr->price_info->total_price <= $filterByPrice[1]);            
+            });
+        }        
+    }
+
+    $finalMergr = array_merge($filterNewArr,$filterNewArr1,$filterNewArr2,$filterNewArr3);    
+    $newArr['result_data']= $finalMergr;
+    $clasa = (object)$newArr;
+    return json_encode($clasa);
+  }
+  
+
+       
+}
+?>

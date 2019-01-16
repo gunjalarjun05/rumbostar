@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InspireME</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> 
+
+<style type="text/css">
+.sansfont {font-family: 'Source Sans Pro', sans-serif;}
+</style>
+
+</head>
+<body class="sansfont ">
+  <div class="email-template">
+    <div class="bg_wrapp" style="width: 600px;height: auto;min-height: 300px;float:left;background-color: #fff;border: 1px solid #f2f2f2; box-shadow:2px 2px 4px #eee;padding: 20px 0px;margin: 20px 0px;">
+      
+      <!-- header-top-strip-start -->
+      <div class="top-strip" style="width: 100%;height: auto;min-height: 40px;background-color:#fff;float: left; ">
+
+      <div class="top-strip-data" style="width: 100%;height: auto;float: left;text-align: center; ">
+         <img src="img/logo.png" alt="logo" style="height: 70px;width: auto;margin: 10px auto; ">
+
+      </div>
+
+      </div>
+      <!-- header-top-strip-end -->
+
+      <!-- header-start -->
+      <div class="header" style="width: 100%;height:auto;min-height: 40px;padding: 5px 0px;background-color:#000;float:left; ">
+
+          <div class="header-data" style="width: 100%;height:auto;float:left; ">
+          <!-- white-line -->
+          <div class="white-line" style="width: 100%;height: 5px;background-color:#fff;float: left; ">
+            
+          </div><!-- white-line end-->
+
+          <div class="heading-data" style="width: 100%;height: auto;min-height: 40px; background-color:#000;float: left;text-align: center;color: #fff;font-size: 24px;line-height: 36px; ">
+                  <?php echo (isset($templateHeader) && $templateHeader!='')?$templateHeader:'Booking Cancelation Request';?>
+          </div>
+
+          <!-- white-line -->
+          <div class="white-line" style="width: 100%;height: 5px;background-color:#fff;float: left; ">
+            
+          </div><!-- white-line end-->
+
+          </div>
+      </div>
+      <!-- header-end -->
+
+
+<!--email-text-data -->
+<div class="email-text" style="width: 100%;height: auto;min-height: 40px;float: left;">
+
+<div style="width: 100%;height: auto;min-height: 40px;float: left;padding: 21px;">
+ <div style="width: 500px; min-height: auto; min-height: 40px; padding: 28px; background-color: #fff; float: left; text-align: center; border: 1px solid #eee; border-bottom: none;">
+       <div style="width: 100%;height: auto;min-height: 40px;float: left;">
+         <div style="width: 100%;height: auto;min-height: 20px;float: left;">
+          <?php echo (isset($welcomemsg) && $welcomemsg !='') ? $welcomemsg:'Welcome message';?>
+         </div>
+        </div>
+
+        <div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+          <b style="font-size: 20px;">Detail information:</b>
+          <br>
+        </div>        
+		<?php if(isset($mailInfoKey) && $mailInfoKey !='' ){ ?>
+			<?php foreach($mailInfoKey as $key=>$result){ ?>
+				<div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+				  <b style="font-size: 16px;"><?php echo (isset($key) && $key!=''): str_replace('_',' ',$key):'';?> :</b>
+
+				  <span style="font-size: 16px;"> <?php echo (isset($result) && $result!='')?$result:'';?></span> <br>
+				</div>
+			<?php } ?>
+		<?php } ?>
+        
+
+        <div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+          <b style="font-size: 16px;"> Last Name :</b> 
+
+          <span style="font-size: 16px;">L</span> <br>
+        </div>
+
+        <div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+          <b style="font-size: 16px;"> Email : </b> 
+
+          <span style="font-size: 16px;">abhijeet@exceptionaire.co</span> <br>
+        </div>
+        
+        <div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+          <b style="font-size: 16px;"> Phone :</b>
+
+          <span style="font-size: 16px;">0123456789 </span> <br>
+        </div>
+
+        <div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+          <b style="font-size: 16px;"> Adults : </b>
+
+          <span>1 </span> <br>
+        </div>
+
+        <div style="width: 100%;height: auto;min-height: 20px;float: left;margin-bottom: 5px;">
+          <b style="font-size: 16px;"> Children : </b> 
+
+          <span style="font-size: 16px;">0 </span> <br>
+        </div>
+
+        
+
+        <div style="width: 100%;height: auto;min-height: 40px;float: left;">
+           
+            <div style="width: 100%;height: auto;float: left;">
+            Thanks
+            </div>
+            <div style="width: 100%;height: auto;float: left;">
+            InspireME Team
+            </div>
+            <a href="#">
+            <?php echo site_url();?>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+</div>
+<!--email-text-data end-->
+
+<!-- envolope-bg-wrapper-start -->
+<div class="envolop-bg" style="background-image: url('img/envelope_newsltr.png');width: 100%;height: 400px;background-size:cover;background-position:top left;float: left;margin-top: -150px;  ">
+   <!-- contact-data -->
+   <div class="contact-data" style="width: 100%;height: auto;float: left;padding-top: 250px;">
+     <!-- adress -->
+     <div style="width: 100%;height: auto;float: left;">
+       
+
+     </div>
+     <!-- adress -->
+
+     <!-- social -->
+     <div style="width: 100%;height: auto;float: left;">
+      <div style="width: 160px;height: auto;float: none;margin: 0px auto;">
+
+         <div style="width: 40px;height: 40px;float: left;margin: 0px auto;margin-left: 10px;">
+          <a href="#">
+            <img src="img/fb.png">
+          </a>       
+         </div>
+         <div style="width: 40px;height: 40px;float: left;margin: 0px auto;margin-left: 10px;">
+          <a href="#">
+            <img src="img/tw.png">
+          </a>       
+         </div>
+         <div style="width: 40px;height: 40px;float: left;margin: 0px auto;margin-left: 10px;">
+          <a href="#">
+            <img src="img/gp.png">
+          </a>      
+         </div>
+
+      </div>
+       
+     </div>
+     <!-- social-end -->
+
+   </div>
+   <!-- contact-data -->
+</div>
+
+<!-- envolope-bg-wrapper-end -->
+
+<div class="clearfix"></div>
+</div>
+<!-- bg-wrapp-end -->
+
+</div>
+
+
+
+
+
+
+
+
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="Hello World"></script>
+</body>
+</html>

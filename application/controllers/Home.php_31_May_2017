@@ -1,0 +1,51 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Home extends CI_Controller {
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 */
+	public function index(){
+		//$config['front_template'] = default_front;
+		$this->load->library('template');
+		$data = array();
+		$this->template->write('title','Rumbostar');
+		//$this->template->write('headerCss',$css);
+		$js = load_js(array('front/jquery.auto-complete.js','front/home.js'));
+        $this->template->write('footerJs',$js);
+         $css = load_css(array('front/jquery.auto-complete.css'));
+        $this->template->write('headerCss',$css);        
+		$this->template->write_view('header','includes/header', $data, TRUE);
+	    $this->template->write_view('content','home', $data, TRUE);
+	   	$this->template->write_view('footer','includes/footer', '', TRUE);
+	    $this->template->render();
+	}
+
+	public function userdashbord(){
+		//$config['front_template'] = default_front;
+		$this->load->library('template');
+		$data = array();
+		$this->template->write('title','Rumbostar');
+		//$this->template->write('headerCss',$css);
+		$this->template->write_view('header','includes/header', $data, TRUE);
+	    $this->template->write_view('content','user-dashboard', $data, TRUE);
+	   	$this->template->write_view('footer','includes/footer', '', TRUE);
+	    $this->template->render();
+	}
+	public function userprofile(){
+		//$config['front_template'] = default_front;
+		$this->load->library('template');
+		$data = array();
+		$this->template->write('title','Rumbostar');
+		//$this->template->write('headerCss',$css);
+		$this->template->write_view('header','includes/header', $data, TRUE);
+	    $this->template->write_view('content','user-profile', $data, TRUE);
+	   	$this->template->write_view('footer','includes/footer', '', TRUE);
+	    $this->template->render();
+	}
+
+}
+
+/* End of file welcome.php */
+/* Location: ./application/controllers/home.php */
